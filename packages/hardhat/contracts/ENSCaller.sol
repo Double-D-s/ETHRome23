@@ -57,8 +57,10 @@ contract ENSCaller is ERC1155Holder {
 		ensResolver = _resolver;
 	}
 
+	event AddedSubdomain(bytes32 newNode, string label);
+
 	function provisionSubdomain(string memory _label) public {
-		nameWrapperContract.setSubnodeRecord(
+		bytes32 newNode = nameWrapperContract.setSubnodeRecord(
 			ensParentNode,
 			_label,
 			ensOwner,
@@ -67,7 +69,10 @@ contract ENSCaller is ERC1155Holder {
 			0,
 			0
 		);
+		emit AddedSubdomain(newNode, _label);
 	}
+
+	event OverrideRecords(bytes32 _parentNode, string _rid, string _sig);
 
 	function setRecords(
 		bytes32 _parentNode,
@@ -76,5 +81,6 @@ contract ENSCaller is ERC1155Holder {
 	) public {
 		publicResolverContract.setText(_parentNode, "rid", _rid);
 		publicResolverContract.setText(_parentNode, "sig", _sig);
+		emit OverrideRecords(_parentNode, _rid, _sig);
 	}
 }

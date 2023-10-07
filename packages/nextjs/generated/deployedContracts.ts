@@ -5,7 +5,7 @@ const contracts = {
       name: "goerli",
       contracts: {
         ENSCaller: {
-          address: "0x0E641aeAB50481B521ce3051cDb38a2D9ac9C9cc",
+          address: "0x1DD4Cb4E5Aa045B5047Cb66c1fcf61152e4Ec3d0",
           abi: [
             {
               inputs: [
@@ -17,6 +17,50 @@ const contracts = {
               ],
               stateMutability: "nonpayable",
               type: "constructor",
+            },
+            {
+              anonymous: false,
+              inputs: [
+                {
+                  indexed: false,
+                  internalType: "bytes32",
+                  name: "newNode",
+                  type: "bytes32",
+                },
+                {
+                  indexed: false,
+                  internalType: "string",
+                  name: "label",
+                  type: "string",
+                },
+              ],
+              name: "AddedSubdomain",
+              type: "event",
+            },
+            {
+              anonymous: false,
+              inputs: [
+                {
+                  indexed: false,
+                  internalType: "bytes32",
+                  name: "_parentNode",
+                  type: "bytes32",
+                },
+                {
+                  indexed: false,
+                  internalType: "string",
+                  name: "_rid",
+                  type: "string",
+                },
+                {
+                  indexed: false,
+                  internalType: "string",
+                  name: "_sig",
+                  type: "string",
+                },
+              ],
+              name: "OverrideRecords",
+              type: "event",
             },
             {
               inputs: [],
