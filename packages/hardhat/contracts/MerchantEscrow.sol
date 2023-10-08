@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^ 0.8 .20;
+pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 contract MerchantEscrow is Ownable {
@@ -35,7 +35,7 @@ contract MerchantEscrow is Ownable {
     uint256 public escrowCount;
     IERC20 public token;
     // =========================== User functions ==============================
-    constructor(IERC20 _token) Ownable(msg.sender) {
+    constructor(IERC20 _token) Ownable() {
         token = _token;
     }
 
