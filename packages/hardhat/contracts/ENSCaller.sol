@@ -64,7 +64,7 @@ contract ENSCaller is ERC1155Holder {
 
 	function provisionSubdomain(string memory _label) public {
 		require(
-			userSubdomains[msg.sender] != bytes32(0x0),
+			userSubdomains[msg.sender] == bytes32(0x0),
 			"User has allready a domain"
 		);
 

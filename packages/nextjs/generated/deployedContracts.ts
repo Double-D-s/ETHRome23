@@ -5,7 +5,7 @@ const contracts = {
       name: "goerli",
       contracts: {
         ENSCaller: {
-          address: "0x1Ebb51751635F872F0f4e0B05E226735B6CCe7b6",
+          address: "0x734AedcAB7a051e2Cbae5E21F693Ec0E5AE17133",
           abi: [
             {
               inputs: [
@@ -304,7 +304,7 @@ const contracts = {
           ],
         },
         MerchantEscrow: {
-          address: "0x8663A46208175cAa42035DdFeD8A96657B850CEb",
+          address: "0x1ea8cBE611724371f5F921F8d57D0cebb41C20F0",
           abi: [
             {
               inputs: [

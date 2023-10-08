@@ -30,7 +30,7 @@ export const SetENSRecords = () => {
     listener: logs => {
       logs.map(log => {
         console.log("new event", log.args._rid);
-        window.location.href = "/";
+        window.location.href = "/dashboard";
       });
     },
   });

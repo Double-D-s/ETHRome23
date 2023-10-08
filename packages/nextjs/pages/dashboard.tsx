@@ -79,32 +79,32 @@ const Dashboard: NextPage = () => {
         {false
           ? "Loading…"
           : items.map((i, index) => (
-              <div className="card w-full bg-base-100 shadow-md hover:shadow-xl hover:cursor-pointer">
-                {/* <figure>
+            <div className="card w-full bg-base-100 shadow-md hover:shadow-xl hover:cursor-pointer">
+              {/* <figure>
                   <img src="/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
                 </figure> */}
-                <div className="card-body">
-                  <h2 className="card-title">
-                    {i.title}
-                    <div className="badge badge-secondary">{i.amount} $ZOLA</div>
-                  </h2>
-                  <p>{i.description}</p>
-                  <div className="card-actions justify-end items-center">
-                    <div className="badge badge-outline">{truncateStr(i.seller, 4)}</div>
-                    <div className="badge badge-outline">State: {i.state}</div>
-                    {/* <button className="btn btn-primary">Buy Now</button> */}
-                    {/* <div className="badge badge-outline"></div>  */}
-                    {/* <div className="badge badge-outline">Products</div> */}
-                    <button
-                      className="btn bg-secondary"
-                      onClick={() => document.getElementById("my_modal_3").showModal()}
-                    >
-                      {i.state}
-                    </button>
-                  </div>
+              <div className="card-body">
+                <h2 className="card-title">
+                  {i.title}
+                  <div className="badge badge-secondary">{i.amount} $ZOLA</div>
+                </h2>
+                <p>{i.description}</p>
+                <div className="card-actions justify-end items-center">
+                  <div className="badge badge-outline">{truncateStr(i.seller, 4)}</div>
+                  <div className="badge badge-outline">State: {i.state}</div>
+                  {/* <button className="btn btn-primary">Buy Now</button> */}
+                  {/* <div className="badge badge-outline"></div>  */}
+                  {/* <div className="badge badge-outline">Products</div> */}
+                  <button
+                    className="btn bg-secondary"
+                    onClick={() => document.getElementById("my_modal_3").showModal()}
+                  >
+                    {i.state}
+                  </button>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
       </div>
     );
   };
@@ -124,12 +124,10 @@ const Dashboard: NextPage = () => {
                     </div>
                   </div>
                   <h2 className="card-title text-center center items-center flex justify-center font-bold">
-                    Pizza.eth
+                    Pizza.zola-esc.eth - <span><a href="/ens-setup">Setup your subdomain!</a></span>
                   </h2>
-                  {/* <CreateSubdomain />
-                  <SetENSRecords /> */}
 
-                  <p>I like buying and sellig things</p>
+                  <p>I like buying and sellig things, ^^ this link is clickable</p>
                   <div className="stats shadow bg-secondary">
                     <div className="stat place-items-center">
                       <div className="stat-title">Bought items</div>
