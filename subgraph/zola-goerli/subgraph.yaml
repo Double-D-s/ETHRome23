@@ -1,0 +1,43 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MerchantEscrow
+    network: goerli
+    source:
+      address: "0x8663A46208175cAa42035DdFeD8A96657B850CEb"
+      abi: MerchantEscrow
+      startBlock: 9828335
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EscrowCanceled
+        - EscrowCompleted
+        - EscrowConfirmed
+        - EscrowCreated
+        - EscrowPaid
+        - OwnershipTransferred
+        - RefundRequest
+        - RefundResult
+      abis:
+        - name: MerchantEscrow
+          file: ./abis/MerchantEscrow.json
+      eventHandlers:
+        - event: EscrowCanceled(indexed uint256,indexed address)
+          handler: handleEscrowCanceled
+        - event: EscrowCompleted(indexed uint256,indexed address)
+          handler: handleEscrowCompleted
+        - event: EscrowConfirmed(indexed uint256,indexed address)
+          handler: handleEscrowConfirmed
+        - event: EscrowCreated(indexed uint256,indexed address,indexed
+            address,uint256,string,string)
+          handler: handleEscrowCreated
+        - event: EscrowPaid(indexed uint256,indexed address,uint256)
+          handler: handleEscrowPaid
+        - event: RefundRequest(indexed uint256,indexed address,indexed
+            address,uint256,uint256,string)
+          handler: handleRefundRequest
+      file: ./src/mappings/merchant-escrow.ts

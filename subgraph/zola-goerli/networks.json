@@ -1,0 +1,14 @@
+{
+  "goerli": {
+    "MerchantEscrow": {
+      "address": "0x8663A46208175cAa42035DdFeD8A96657B850CEb",
+      "startBlock": 9828335
+    }
+  },
+  "localhost": {
+    "MerchantEscrow": {
+      "startBlock": 0,
+      "address": "0x8663A46208175cAa42035DdFeD8A96657B850CEb"
+    }
+  }
+}
