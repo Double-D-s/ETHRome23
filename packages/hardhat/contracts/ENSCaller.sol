@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 
+import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
 interface INameWrapper {
@@ -28,6 +29,8 @@ contract ENSCaller is ERC1155Holder {
 	bytes32 public ensParentNode;
 	address public ensOwner;
 	address public ensResolver;
+
+	mapping(address => bytes32) public userSubdomains;
 
 	address nameWrapperDeployment = 0x114D4603199df73e7D157787f8778E21fCd13066;
 	INameWrapper nameWrapperContract = INameWrapper(nameWrapperDeployment);
@@ -57,9 +60,14 @@ contract ENSCaller is ERC1155Holder {
 		ensResolver = _resolver;
 	}
 
-	event AddedSubdomain(bytes32 newNode, string label);
+	event AddedSubdomain(address caller, bytes32 newNode, string label);
 
 	function provisionSubdomain(string memory _label) public {
+		require(
+			userSubdomains[msg.sender] != bytes32(0x0),
+			"User has allready a domain"
+		);
+
 		bytes32 newNode = nameWrapperContract.setSubnodeRecord(
 			ensParentNode,
 			_label,
@@ -69,10 +77,18 @@ contract ENSCaller is ERC1155Holder {
 			0,
 			0
 		);
-		emit AddedSubdomain(newNode, _label);
+
+		userSubdomains[msg.sender] = newNode;
+
+		emit AddedSubdomain(msg.sender, newNode, _label);
 	}
 
-	event OverrideRecords(bytes32 _parentNode, string _rid, string _sig);
+	event OverrideRecords(
+		address caller,
+		bytes32 _parentNode,
+		string _rid,
+		string _sig
+	);
 
 	function setRecords(
 		bytes32 _parentNode,
@@ -81,6 +97,6 @@ contract ENSCaller is ERC1155Holder {
 	) public {
 		publicResolverContract.setText(_parentNode, "rid", _rid);
 		publicResolverContract.setText(_parentNode, "sig", _sig);
-		emit OverrideRecords(_parentNode, _rid, _sig);
+		emit OverrideRecords(msg.sender, _parentNode, _rid, _sig);
 	}
 }

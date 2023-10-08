@@ -5,7 +5,7 @@ const contracts = {
       name: "goerli",
       contracts: {
         ENSCaller: {
-          address: "0x1DD4Cb4E5Aa045B5047Cb66c1fcf61152e4Ec3d0",
+          address: "0xa939E8BC372617f78f6E2A9F4471379aDfF57957",
           abi: [
             {
               inputs: [
@@ -21,6 +21,12 @@ const contracts = {
             {
               anonymous: false,
               inputs: [
+                {
+                  indexed: false,
+                  internalType: "address",
+                  name: "caller",
+                  type: "address",
+                },
                 {
                   indexed: false,
                   internalType: "bytes32",
@@ -40,6 +46,12 @@ const contracts = {
             {
               anonymous: false,
               inputs: [
+                {
+                  indexed: false,
+                  internalType: "address",
+                  name: "caller",
+                  type: "address",
+                },
                 {
                   indexed: false,
                   internalType: "bytes32",
@@ -265,6 +277,25 @@ const contracts = {
                   internalType: "bool",
                   name: "",
                   type: "bool",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "",
+                  type: "address",
+                },
+              ],
+              name: "userSubdomains",
+              outputs: [
+                {
+                  internalType: "bytes32",
+                  name: "",
+                  type: "bytes32",
                 },
               ],
               stateMutability: "view",
